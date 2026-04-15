@@ -1,0 +1,170 @@
+/*Styling for the start screen*/
+.start-screen{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  background: radial-gradient(circle, black 0%, blue 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.start-screen h1 { /*Styling for the main title*/
+  font-size: 48px;
+  text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 20px;
+}
+.start-screen .categories { /*Styling for category selection*/
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.start-screen .category-menu {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: bold;
+}
+.start-screen .difficulty { /*Styling for difficulty selection*/
+  display: flex;
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 10px;
+  gap: 20px;
+}
+.start-screen .difficulty label:hover {
+  color: gray;
+  cursor: pointer;
+}
+.start-screen .start-btn { /*Styling for the start button*/
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.start-screen .start-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+/*Styling for the quiz screen*/
+.quiz-screen {
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: radial-gradient(circle, black 0%, blue 100%);
+  color: white;
+}
+.quiz-banner { /*Styling for the quiz banner at the top*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid white;
+  font-weight: bold;
+  font-size: 24px;
+}
+.question-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quiz-screen .question { /*Styling for the question text*/
+  font-size: 28px;
+  margin: 40px 20px 20px;
+}
+.quiz-screen .answers-grid { /*Styling for the grid of answer buttons*/
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 20px;
+}
+.quiz-screen .answer-btn {
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+.quiz-screen .answer-btn:hover {
+  background-color: white;
+  color: black;
+}
+.answer-btn.correct {
+  background-color: green;
+  color: white;
+}
+.answer-btn.incorrect {
+  background-color: red;
+  color: white;
+}
+.quiz-screen .quiz-footer { /*Styling for the footer at the bottom of the quiz screen*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid white;
+  font-weight: bold;
+}
+.quit-btn {
+  padding: 10px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+/*Styling for the results screen*/
+.results-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: radial-gradient(circle, black 0%, blue 100%);
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+.results-screen h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.final-score {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.results-screen .restart-btn {
+  padding: 15px 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.results-screen .restart-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
