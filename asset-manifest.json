@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rdem-ou/RD-GrandTriviaEngine/static/css/main.0fde5281.css",
+    "main.js": "/rdem-ou/RD-GrandTriviaEngine/static/js/main.67365344.js",
+    "static/js/453.1ff3159b.chunk.js": "/rdem-ou/RD-GrandTriviaEngine/static/js/453.1ff3159b.chunk.js",
+    "index.html": "/rdem-ou/RD-GrandTriviaEngine/index.html",
+    "main.0fde5281.css.map": "/rdem-ou/RD-GrandTriviaEngine/static/css/main.0fde5281.css.map",
+    "main.67365344.js.map": "/rdem-ou/RD-GrandTriviaEngine/static/js/main.67365344.js.map",
+    "453.1ff3159b.chunk.js.map": "/rdem-ou/RD-GrandTriviaEngine/static/js/453.1ff3159b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0fde5281.css",
+    "static/js/main.67365344.js"
+  ]
+}
