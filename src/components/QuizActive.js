@@ -1,5 +1,7 @@
 import React, { useState, useEffect, use } from 'react';
 import { shuffleAnswers } from '../utils/shuffler';
+import correctSound from '../sounds/correct.mp3';
+import wrongSound from '../sounds/wrong.mp3';
 
 const QuizActive = ({ questions, settings, onComplete }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,6 +36,14 @@ const QuizActive = ({ questions, settings, onComplete }) => {
     }
   }, [currentIndex,currentQuestion]);
 
+  //Audio logic
+  const playSound = (type) => {
+    let soundFile = type === 'correct' ? correctSound : wrongSound;
+    let audio = new Audio(soundFile);
+    audio.volume = 0.5;
+    audio.play();
+  };
+
   //Handle answer selection
   const handleAnswer = (answer) => {
     if (isRevealed) return; // Prevent multiple clicks
@@ -44,9 +54,16 @@ const QuizActive = ({ questions, settings, onComplete }) => {
     // Check if the answer is correct and update score/lives
     const isCorrect = answer === currentQuestion.correct_answer;
     if (isCorrect) {
+        //Play correct sound effect & animation
+        playSound('correct');
+        document.getElementById('question-section').style.animation = 'correctAnimation 1.5s';
         const timeBonus = timer * 10; // Bonus points for remaining time
         setScore(prev => prev + 100 + timeBonus);
+        
     } else {
+        //Play incorrect sound effect & animation
+      playSound('incorrect');
+      document.getElementById('question-section').style.animation = 'incorrectAnimation 1.5s';
       setLives(prev => prev - 1);
     }
     setTimeout(() => {
@@ -56,6 +73,7 @@ const QuizActive = ({ questions, settings, onComplete }) => {
             setCurrentIndex(prev => prev + 1);
             setSelectedAnswer(null);
             setIsRevealed(false);
+            document.getElementById('question-section').style.animation = ''; // Reset animation
         } else {
             onComplete(score); // End game if all questions are answered
         }
@@ -67,13 +85,14 @@ const QuizActive = ({ questions, settings, onComplete }) => {
     }
 
   return (
-    <div className="quiz-screen">
+    <div className="quiz-screen" id="quiz-screen">
         <div className="quiz-banner">
             <span className="category">{settings.category}</span>
             <span className="question-number">Question {currentIndex + 1} of {questions.length}</span>
             <span className="difficulty">{settings.difficulty.toUpperCase()}</span>
         </div>
-        <div className="question-section">
+        <div className="question-section" id="question-section">
+            <span className="timer">Time: {timer}s</span>
             <h2 className="question" dangerouslySetInnerHTML={{ __html: currentQuestion.question }} />
             <div className="answers-grid">
                 {shuffledAnswers.map((answer, idx) => {
@@ -91,8 +110,8 @@ const QuizActive = ({ questions, settings, onComplete }) => {
                             className={`answer-btn ${btnStatus}`}
                             onClick={() => handleAnswer(answer)}
                             disabled={isRevealed}
+                            dangerouslySetInnerHTML={{ __html: answer }}
                         >
-                            {answer}
                         </button>
                     );
                 })}

@@ -56,6 +56,32 @@
   color: black;
   cursor: pointer;
 }
+.leaderboard-section{ /*Styling for the leaderboard section on the start screen*/
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 500px;
+}
+.leaderboard-section h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.leaderboard-table th{
+  border-bottom: 1px solid white;
+  padding: 10px;
+  text-align: center;
+}
+.leaderboard-table td {
+  border-bottom: 1px solid white;
+  padding: 10px;
+  text-align: center;
+}
 
 /*Styling for the quiz screen*/
 .quiz-screen {
@@ -81,6 +107,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.timer {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 .quiz-screen .question { /*Styling for the question text*/
   font-size: 28px;
@@ -133,6 +164,20 @@
   background-color: red;
   color: white;
   cursor: pointer;
+}
+
+/*Incorrect & Correct answer animations*/
+@keyframes correctAnimation { /*The screen flashes green when the user selects the correct answer*/
+  0% { background-color: transparent; }
+  50% { background-color: green; }
+  100% { background-color: transparent; }
+}
+@keyframes incorrectAnimation { /*The screen shakes and flashes red when the user selects the incorrect answer*/
+  0% { transform: translate(0, 0); background-color: transparent; }
+  25% { transform: translate(-10px, 0); background-color: red; }
+  50% { transform: translate(10px, 0); background-color: transparent; }
+  75% { transform: translate(-10px, 0); background-color: red; }
+  100% { transform: translate(0, 0); background-color: transparent; }
 }
 
 /*Styling for the results screen*/

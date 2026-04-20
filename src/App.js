@@ -28,6 +28,17 @@ function App() {
 
   //Function to end the game and show results screen
   const endGame = (finalScore) => {
+    const savedScores = JSON.parse(localStorage.getItem("triviaHighScores")) || [];
+    //Create new score entry with settings
+    const newEntry = {
+      score : finalScore,
+      category : settings.category,
+      difficulty : settings. difficulty
+    };
+    const updatedScores = [...savedScores, newEntry]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5);
+    localStorage.setItem('triviaHighScores', JSON.stringify(updatedScores));
     setScore(finalScore);
     setGameState('RESULTS_SCREEN');
   };

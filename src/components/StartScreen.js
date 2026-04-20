@@ -6,12 +6,15 @@ const StartScreen = ({ onStart }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('9'); // Default to General Knowledge
   const [selectedDifficulty, setDifficulty] = useState('easy');
+  const [highScores, setHighScores] = useState([]);
 
   //Fetch categories from API when component mounts
   useEffect(() => {
     const initScreens = async () => {
       const data = await fetchCategories();
       setCategories(data);
+      const saved = JSON.parse(localStorage.getItem('triviaHighScores')) || [];
+      setHighScores(saved);
     };
     initScreens();
   }, []);
@@ -71,7 +74,30 @@ return (
         <div className="start-button">
             <button className="start-btn"onClick={handleStart}>Start Quiz</button>
         </div>
-    </div>
+        {highScores.length > 0 && (  
+          <div className="leaderboard-section">
+            <h3>🏆Top 5 Scores🏆</h3>
+            <table className="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Score</th>
+                  <th>Category</th>
+                  <th>Difficulty</th>
+                </tr>
+              </thead>
+              <tbody>
+                {highScores.map((score, index) => (
+                  <tr key={index}>
+                    <td>{score.score}</td>
+                    <td>{score.category}</td>
+                    <td>{score.difficulty}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
 );
 }
 export default StartScreen;
